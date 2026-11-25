@@ -54,3 +54,48 @@ body:has(.cosmetic:is(:hover,:focus-visible)){background:#fbf5e6}
 @media(hover:none){.tag{opacity:1;translate:0 0}}
 @media(max-width:610px){.wordmark{width:96px}.lockup{font-size:11.5px}.choice-body .lockup{min-height:0}.tag{left:8px;bottom:8px;font-size:.68rem;padding:4px 7px}.visual.car img{object-position:30% 55%}.auto-lockup{font-size:14px;margin-bottom:18px}}
 @media(prefers-reduced-motion:reduce){.choice,.wm-gold,.wm-color{animation:none}.wm-gold{opacity:0}.choice,.visual img,.visual::after{transition:none}.choice:is(:hover,:focus-visible){--lift:0}.choice:is(:hover,:focus-visible) .visual img{transform:none}}
+
+/* --- Catálogo de Cosmética Automotor --- */
+.auto-hero.linea figure{background:#fff;min-height:300px}
+.auto-hero.linea figure img{object-fit:contain;padding:14px}
+.pgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-bottom:10px}
+.pcard{display:flex;flex-direction:column;background:#fff;border:1px solid #e3d8c7;border-radius:14px;overflow:hidden;text-decoration:none;transition:transform .3s,box-shadow .3s,border-color .3s;position:relative}
+.pcard::after{content:"";position:absolute;left:0;right:0;top:0;height:4px;background:linear-gradient(90deg,#9a6c06,#f0cd62,#9a6c06);transform:scaleX(0);transform-origin:left;transition:transform .4s}
+.pcard:is(:hover,:focus-visible){transform:translateY(-5px);box-shadow:0 18px 38px #2d241722;border-color:transparent}
+.pcard:is(:hover,:focus-visible)::after{transform:scaleX(1)}
+.pimg{aspect-ratio:3/2;overflow:hidden;background:#17130f}
+.pimg img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.pcard:is(:hover,:focus-visible) .pimg img{transform:scale(1.07)}
+.pbody{display:flex;flex-direction:column;flex:1;padding:16px 18px 18px}
+.pbody h3{font-size:1.3rem;letter-spacing:-.035em;line-height:1.12;margin:6px 0}
+.pbody p{margin:0 0 14px;line-height:1.4;color:#4a5361;font-size:.97rem}
+.more{margin-top:auto;font-weight:650;font-size:.93rem;color:#7a5a12}
+.more i{font-style:normal;display:inline-block;margin-left:.45em;transition:transform .3s}
+.pcard:is(:hover,:focus-visible) .more i{transform:translateX(5px)}
+.phero{display:grid;grid-template-columns:1fr 1.15fr;background:#f2eadb;border:1px solid #e3d8c7;border-radius:18px;overflow:hidden}
+.ptext{padding:clamp(26px,4vw,56px);display:flex;flex-direction:column;align-items:flex-start;justify-content:center}
+.phero h1{font-size:clamp(2.5rem,4.6vw,4.1rem);letter-spacing:-.06em;line-height:1;margin:8px 0 0;font-weight:750;color:#241c14}
+.lead{font-size:1.1rem;line-height:1.5;color:#4a5361;margin:18px 0 12px;max-width:40ch}
+.pcont{margin:0 0 22px;color:#3a2c12}
+.ptext .action{margin-top:0}
+.puse{min-height:300px;background:#17130f}
+.puse img{width:100%;height:100%;object-fit:cover}
+.pvars,.pinfo{padding-top:clamp(36px,5vw,64px)}
+.pvars h2,.pinfo h2{font-size:clamp(1.9rem,3.2vw,2.8rem);letter-spacing:-.055em;line-height:1;margin:0 0 20px;font-weight:750}
+.variants{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.pvars.n1 .variants{grid-template-columns:minmax(0,420px)}
+.variant{background:#fff;border:1px solid #e3d8c7;border-radius:14px;overflow:hidden;margin:0}
+.variant img{width:100%;aspect-ratio:1;object-fit:contain}
+.variant figcaption{padding:12px 16px 16px;font-weight:650;border-top:2px solid #c9a861;color:#241c14}
+.pinfo{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,56px)}
+.pinfo ul,.pinfo ol{margin:0;padding-left:1.25em;line-height:1.6;color:#3d4450;font-size:1.04rem}
+.pinfo li{margin-bottom:6px}
+.pinfo li::marker{color:#b88412;font-weight:700}
+@media(max-width:980px){.pgrid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:780px){.phero{grid-template-columns:1fr}.puse{order:-1;min-height:0;aspect-ratio:3/2}.pinfo{grid-template-columns:1fr}.variants{grid-template-columns:repeat(3,1fr);gap:10px}.variant figcaption{padding:8px 10px 10px;font-size:.88rem}}
+@media(max-width:610px){.pgrid{gap:12px}.pbody{padding:12px}.pbody h3{font-size:1.08rem}.pbody p{font-size:.88rem;margin-bottom:10px}.auto-hero.linea figure{height:170px;min-height:0}.pvars.n1 .variants{grid-template-columns:1fr}}
+@media(max-width:360px){.pgrid{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.pcard,.pimg img{transition:none}.pcard:is(:hover,:focus-visible){transform:none}}
+.variants>*,.pgrid>*,.phero>*,.pinfo>*{min-width:0}
+.auto-hero.linea{grid-template-columns:1fr 1.35fr}
+@media(max-width:610px){.auto-hero.linea{grid-template-columns:1fr}}
