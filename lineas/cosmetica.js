@@ -22,4 +22,13 @@
       c.addEventListener('pointerleave',function(){c.style.removeProperty('--rx');c.style.removeProperty('--ry');});
     });
   }
+  // shampoo: elegir aroma cambia el color y la foto
+  var picks=d.querySelectorAll('.variant.pick'),main=d.querySelector('main'),use=d.getElementById('useimg'),tag=d.getElementById('aroma');
+  function choose(b){
+    picks.forEach(function(x){x.classList.toggle('on',x===b);x.setAttribute('aria-pressed',x===b?'true':'false');});
+    main.style.setProperty('--c',b.dataset.color);
+    if(tag)tag.textContent='Aroma '+b.dataset.name.toLowerCase();
+    if(use&&use.getAttribute('src')!==b.dataset.use){use.classList.add('sw');setTimeout(function(){use.src=b.dataset.use;use.onload=function(){use.classList.remove('sw');};},300);}
+  }
+  if(picks.length){picks.forEach(function(b){b.addEventListener('click',function(){choose(b);});});choose(picks[0]);}
 })();

@@ -189,3 +189,37 @@ body:has(.cosmetic:is(:hover,:focus-visible)){background:#fbf5e6}
 .pinfo.col{grid-template-columns:1fr;padding-top:0;gap:20px}
 .pinfo.col h2{font-size:clamp(1.7rem,2.6vw,2.3rem)}
 @media(max-width:780px){.pduo{grid-template-columns:1fr}.variants.one .variant img{aspect-ratio:1;max-height:none}}
+
+/* --- v7: un solo WhatsApp, marca con estrella, aromas, motos --- */
+.wafloat{width:68px;height:68px;padding:0;border-radius:50%;justify-content:center;gap:0;right:20px;bottom:20px;overflow:hidden;transition:width .35s cubic-bezier(.2,.7,.2,1),background .25s,transform .25s,box-shadow .25s}
+.wafloat .wa{width:38px;height:38px;margin:0;transition:transform .45s}
+.wafloat span{display:block;max-width:0;opacity:0;white-space:nowrap;font-weight:800;font-size:1.02rem;transition:max-width .35s,opacity .25s,margin .35s}
+.wafloat:is(:hover,:focus-visible){width:198px;background:#128c4a;transform:translateY(-4px);box-shadow:0 16px 34px #0b3d1e77;animation:none}
+.wafloat:is(:hover,:focus-visible) .wa{transform:rotate(-14deg) scale(1.08)}
+.wafloat:is(:hover,:focus-visible) span{max-width:130px;opacity:1;margin-left:10px}
+.wafloat:active{transform:scale(.95)}
+.brandlock{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brandsub{font-family:"Neoil Sub","Avenir Next","Helvetica Neue",Arial,sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.3em;font-size:.72rem;line-height:1.3;color:#111;border-left:2px solid #c9982c;padding-left:12px}
+.star{width:18px;height:18px;fill:#d9a92e;filter:drop-shadow(0 0 4px #f3d26a);animation:twinkle 2.8s ease-in-out infinite;margin-left:-4px;align-self:flex-start;margin-top:14px}
+@keyframes twinkle{0%,100%{transform:scale(.8) rotate(0);opacity:.75}50%{transform:scale(1.25) rotate(20deg);opacity:1}}
+.motochip{position:absolute;right:10px;top:14px;background:#111;color:#f3d26a;font-weight:750;font-size:.7rem;letter-spacing:.05em;text-transform:uppercase;padding:6px 9px;border-radius:999px;box-shadow:0 4px 12px #0004}
+.motonote{margin:0;font-weight:700;color:#241c14;background:#fff;border:1.5px solid var(--c);border-radius:999px;padding:9px 16px}
+main[style]{transition:--c .4s}
+.phero,.pinfo>div,.phero h1 span,.pvars h2 span,.pinfo h2 span,.chip{transition:border-color .45s,color .45s,background-color .45s}
+.pickhint{margin:-10px 0 18px;color:#4a5361}
+.variant.pick{font:inherit;text-align:left;padding:0;cursor:pointer;display:block;width:100%;border:2px solid #e3d8c7;opacity:.72}
+.variant.pick:hover{opacity:1}
+.variant.pick.on{opacity:1;border-color:var(--c);box-shadow:0 18px 40px color-mix(in srgb,var(--c) 34%,#0000);transform:translateY(-6px)}
+.variant.pick .cap{display:flex;align-items:center;gap:10px;padding:12px 16px 16px;font-weight:700;border-top:3px solid var(--c);color:#241c14}
+.variant.pick .cap i{width:16px;height:16px;border-radius:50%;background:var(--c);box-shadow:0 0 0 3px color-mix(in srgb,var(--c) 28%,#fff)}
+.aromatag{display:inline-block;margin-left:12px;background:var(--c);color:#fff;font-weight:750;font-size:.82rem;padding:4px 11px;border-radius:999px;transition:background-color .45s}
+.aromatag:empty{display:none}
+#useimg{transition:opacity .35s}
+#useimg.sw{opacity:0}
+@media(max-width:610px){.wafloat{width:62px;height:62px;right:14px;bottom:14px}.wafloat .wa{width:34px;height:34px}.brandsub{font-size:.58rem;letter-spacing:.22em;padding-left:9px}.brandlock{gap:9px}.star{width:13px;height:13px;margin-top:8px}.motochip{font-size:.58rem;padding:4px 6px;right:6px;top:10px}.variant.pick .cap{padding:8px 8px 10px;font-size:.84rem;gap:6px}.variant.pick .cap i{width:11px;height:11px}}
+@media(prefers-reduced-motion:reduce){.star{animation:none}}
+.motochip{top:auto;bottom:10px;right:10px}
+.brandsub{font-size:.84rem}
+.star{width:22px;height:22px;margin-top:10px}
+.auto .bar{height:78px}
+@media(max-width:610px){.brandsub{font-size:.62rem}.star{width:14px;height:14px;margin-top:8px}.auto .bar{height:58px}.motochip{bottom:6px;right:6px}}
