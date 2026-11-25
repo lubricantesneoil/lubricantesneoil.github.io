@@ -5,3 +5,52 @@
 @media(max-width:610px){.wrap{width:calc(100% - 32px)}.bar{height:52px}.wordmark{width:78px}.portal{padding:26px 0}.portal h1{font-size:2.8rem;margin-bottom:20px}.choices{grid-template-columns:1fr;gap:14px}.choice{display:grid;grid-template-columns:32% 1fr;border-radius:11px}.visual{height:100%;min-height:168px}.visual.shampoos img{object-position:50% 50%}.choice-body{padding:14px 12px}.identity{height:54px}.identity.original{margin-left:-5px}.choice-body p{margin:8px 0 11px;line-height:1.26}.action{font-size:.9rem;padding:10px 12px}.bottom{min-height:56px}.bottom a{font-size:.84rem}.auto-hero{grid-template-columns:1fr}.auto-hero figure{height:235px}.auto-hero figure img{object-fit:contain}.auto-logo{width:85px;margin-bottom:18px}.auto-hero h1{font-size:3.4rem}.auto-hero p{margin:12px 0 18px}.back{margin:17px 0}.products{gap:0 16px}.products h3{font-size:1.2rem;overflow-wrap:anywhere}.products li{padding:15px 0 20px}.ask{align-items:flex-start;flex-direction:column}.collection{margin-bottom:21px}}
 @media(max-width:360px){.choice{grid-template-columns:24% 1fr}.products{grid-template-columns:1fr}.wrap{width:calc(100% - 24px)}}
 @media(prefers-reduced-motion:reduce){.choice{transition:none}.choice:hover{transform:none}}
+
+/* --- Portada interactiva y logos unificados --- */
+@font-face{font-family:"Neoil Sub";src:url(montserrat-700.woff2) format("woff2");font-weight:700;font-display:swap}
+.wordmark{height:auto;width:124px}
+.wordmark.swap{position:relative;display:block;aspect-ratio:900/275}
+.wordmark.swap img{position:absolute;inset:0;width:100%;height:100%;transition:opacity .45s}
+.wm-gold{opacity:0;animation:wm-gold 7s ease-in-out infinite}
+.wm-color{animation:wm-color 7s ease-in-out infinite}
+@keyframes wm-gold{0%,38%{opacity:0}50%,88%{opacity:1}100%{opacity:0}}
+@keyframes wm-color{0%,38%{opacity:1}50%,88%{opacity:0}100%{opacity:1}}
+body:has(.lubricant:is(:hover,:focus-visible)) .wm-gold,body:has(.cosmetic:is(:hover,:focus-visible)) .wm-color{animation:none;opacity:0}
+body:has(.lubricant:is(:hover,:focus-visible)) .wm-color,body:has(.cosmetic:is(:hover,:focus-visible)) .wm-gold{animation:none;opacity:1}
+body{transition:background-color .5s}
+body:has(.lubricant:is(:hover,:focus-visible)){background:#eef3fb}
+body:has(.cosmetic:is(:hover,:focus-visible)){background:#fbf5e6}
+.lockup{display:inline-flex;flex-direction:column;align-items:stretch;font-size:clamp(15px,1.55vw,21px);width:10.5em}
+.lockup img{width:100%;height:auto}
+.lockup .sub{font-family:"Neoil Sub","Avenir Next","Helvetica Neue",Arial,sans-serif;font-weight:700;text-transform:uppercase;font-size:1em;line-height:1.18;letter-spacing:.3em;margin:.5em -.3em 0 .1em;white-space:nowrap}
+.lockup.lub .sub{color:#062b60}
+.lockup.cos .sub{color:#111}
+.choice-body .lockup{min-height:7.3em}
+.auto-lockup{font-size:17px;margin-bottom:26px}
+.choices{perspective:1400px}
+.choice{position:relative;transition:box-shadow .3s,transform .3s,opacity .3s,border-color .3s;transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateY(var(--lift,0));animation:card-in .7s cubic-bezier(.2,.7,.2,1) backwards;will-change:transform}
+.choice.cosmetic{animation-delay:.12s}
+@keyframes card-in{from{opacity:0;translate:0 26px}to{opacity:1;translate:0 0}}
+.choice::after{content:"";position:absolute;left:0;right:0;top:0;height:4px;background:var(--bar,var(--navy));transform:scaleX(0);transform-origin:left;transition:transform .4s}
+.lubricant{--bar:linear-gradient(90deg,#e30d18,#ff7a0a)}
+.cosmetic{--bar:linear-gradient(90deg,#9a6c06,#f0cd62,#9a6c06)}
+.choice:is(:hover,:focus-visible){--lift:-6px;box-shadow:0 22px 46px #14243724;border-color:transparent}
+.choice:is(:hover,:focus-visible)::after{transform:scaleX(1)}
+.choices:has(.choice:is(:hover,:focus-visible)) .choice:not(:hover,:focus-visible){opacity:.62}
+.choice:active{--lift:-1px;scale:.985}
+.visual{position:relative}
+.visual img{transition:transform .9s cubic-bezier(.2,.7,.2,1),filter .5s}
+.choice:is(:hover,:focus-visible) .visual img{transform:scale(1.08)}
+.visual::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 35%,#ffffff55 50%,transparent 65%);transform:translateX(-120%);pointer-events:none}
+.choice:is(:hover,:focus-visible) .visual::after{transform:translateX(120%);transition:transform .9s}
+.visual.car{background:#17130f}
+.visual.car img{object-position:38% 58%}
+.tag{position:absolute;left:14px;bottom:14px;z-index:1;font-size:.8rem;font-weight:650;letter-spacing:.04em;color:#fff;background:#0b1626cc;padding:6px 10px;border-radius:999px;opacity:0;translate:0 8px;transition:opacity .3s,translate .3s}
+.cosmetic .tag{background:#1d160bd9;color:#f3d57a}
+.choice:is(:hover,:focus-visible) .tag{opacity:1;translate:0 0}
+.action i{font-style:normal;display:inline-block;margin-left:.55em;transition:transform .3s}
+.choice:is(:hover,:focus-visible) .action i{transform:translateX(5px)}
+.cosmetic .action{background:linear-gradient(180deg,#2d2417,#17120a);box-shadow:inset 0 0 0 1px #b8891e}
+@media(hover:none){.tag{opacity:1;translate:0 0}}
+@media(max-width:610px){.wordmark{width:96px}.lockup{font-size:11.5px}.choice-body .lockup{min-height:0}.tag{left:8px;bottom:8px;font-size:.68rem;padding:4px 7px}.visual.car img{object-position:30% 55%}.auto-lockup{font-size:14px;margin-bottom:18px}}
+@media(prefers-reduced-motion:reduce){.choice,.wm-gold,.wm-color{animation:none}.wm-gold{opacity:0}.choice,.visual img,.visual::after{transition:none}.choice:is(:hover,:focus-visible){--lift:0}.choice:is(:hover,:focus-visible) .visual img{transform:none}}
